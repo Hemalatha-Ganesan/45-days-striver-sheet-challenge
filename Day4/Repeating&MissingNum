@@ -1,0 +1,28 @@
+class Solution {
+    public int[] findMissingRepeatingNumbers(int[] nums) {
+        int res[] = new int[2];
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        for(int num: nums)
+        {
+           hm.put(num,hm.getOrDefault(num,0)+1);
+        }
+        for(int key: hm.keySet())
+        {
+            if(hm.get(key) > 1){
+                res[0] = key;
+                break;
+            }
+        }
+        int n = nums.length;
+        for(int i=1;i<=n;i++)
+        {
+            if(!hm.containsKey(i))
+            {
+                res[1] = i;
+                break;
+            }
+        }
+        return res;
+
+    }
+}
