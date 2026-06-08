@@ -1,0 +1,43 @@
+class Solution {
+    public int subarraysWithXorK(int[] nums, int k) {
+      HashMap<Integer,Integer> hm = new HashMap<>();
+      int cnt = 0,xor = 0;
+      hm.put(0,1);
+      for(int num: nums)
+      {
+          xor ^= num;
+          int x = xor ^ k;
+          if(hm.containsKey(x))
+          {
+            cnt += hm.get(x);
+          }
+          hm.put(xor,hm.getOrDefault(xor,0)+1);
+      }
+      return cnt;
+    }
+}
+
+
+class Solution {
+    public int subarraysWithXorK(int[] nums, int k) {
+
+        int n = nums.length;
+        int count = 0;
+
+        for(int i = 0; i < n; i++) {
+
+            int xor = 0;
+
+            for(int j = i; j < n; j++) {
+
+                xor ^= nums[j];
+
+                if(xor == k) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+}
