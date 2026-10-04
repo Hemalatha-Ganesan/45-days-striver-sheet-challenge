@@ -1,0 +1,24 @@
+class Solution {
+    public int countSpecialIntegers(int[] nums)
+     {
+        int n = nums.length;
+        int cnt = 0;
+        HashMap<Integer,Integer> hm = new HashMap<>();
+        hm.put(nums[0],1);
+        for(int i=1;i<n;i++)
+        {
+            if(nums[i] != nums[i-1])
+            {
+                hm.put(nums[i],hm.getOrDefault(nums[i],0)+1);
+            }
+        }
+        for(int key:hm.keySet())
+        {
+            if(hm.get(key) == 1){
+                cnt++;
+            }
+        }
+        return cnt;
+       
+    }
+}
